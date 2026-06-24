@@ -4,7 +4,7 @@ const Movie = require("./models/movie.models");
 initializeDatabase();
 
 
-const newMovie = new Movie({
+const newMovie = {
   title: "New Movie",
   releaseYear: 2023,
   genre: ["Drama"],
@@ -17,11 +17,11 @@ const newMovie = new Movie({
   awards: "IFA Filmfare Awards",
   posterUrl: "https://example.com/new-poster1.jpg",
   trailerUrl: "https://example.com/new-trailer1.mp4",
-});
+};
 
-async function createMovie(newMovie) {
+async function createMovie(movieData) {
     try {
-        const movie = new Movie(newMovie);
+        const movie = new Movie(movieData);
         const saveMovie = await movie.save();
         console.log(saveMovie);
     }catch (error) {
